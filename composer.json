@@ -1,0 +1,17 @@
+{
+    "name": "mohamedahmed/complex-data",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mohammed Abdellatef",
+            "email": "50413981+mohamedahmedaa22@users.noreply.github.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    }
+}
