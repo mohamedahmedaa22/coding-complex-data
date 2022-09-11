@@ -17,13 +17,31 @@ class SearchNameTest extends TestCase
         );
     }
 
-    public function testSeachName_withOneFile_returnDataOfFile(): void {
-        $search = new SearchName();
-        $fileData = $search->findElement(
-            'docs',
-            new File(25, 'docs', new ListOfFiles())
-        );
+    /**
+     * @dataProvider searchSamples
+     */
+    public function testSeachName_withOneFile_returnDataOfFile($search, $val): void
+    {
+        $this->assertEquals($val, $search);
+    }
 
-        $this->assertEquals(25, $fileData);
+    public function searchSamples(): array
+    {
+        return [
+            [
+                (new SearchName())->findElement(
+                    'docs',
+                    new File(20, 'docs', new ListOfFiles())
+                ),
+                20
+            ],
+            [
+                (new SearchName())->findElement(
+                    'doc1',
+                    new File(0, 'docs', new ListOfFiles(new File(12, 'doc1', new ListOfFiles())))
+                ),
+                12
+            ]
+        ];
     }
 }
